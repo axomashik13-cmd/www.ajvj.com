@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gallery | Arunoday Jatiya Vidyalaya, Japia</title>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body{
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+
+        /* ===== HEADER ===== */
+        #header{
+            height: 100px;
+            background-color: black;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 30px;
+        }
+
+        #header h1{
+            color: white;
+            font-size: 28px;
+            flex: 1;
+            text-align: center;
+        }
+
+        .logo{
+            height: 70px;
+        }
+
+        /* ===== NAVBAR ===== */
+        #nav{
+            background-color: #b30000;
+            padding: 12px 0;
+            text-align: center;
+        }
+
+        #nav a{
+            color: white;
+            text-decoration: none;
+            margin: 0 25px;
+            font-size: 17px;
+            font-weight: bold;
+        }
+
+        /* ===== GALLERY ===== */
+        #gallery{
+            max-width: 1100px;
+            margin: 40px auto;
+            background: white;
+            padding: 40px;
+            border-radius: 6px;
+        }
+
+        #gallery h2{
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 30px;
+        }
+
+        .gallery-grid{
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 25px;
+        }
+
+        .photo{
+            height: 180px;
+            overflow: hidden;
+            border-radius: 6px;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.25);
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .photo:hover{
+            transform: translateY(-8px);
+        }
+
+        .photo img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* ===== POPUP ===== */
+        #popup{
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: 100%;
+            background: rgba(0,0,0,0.85);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+        }
+
+        #popup-content{
+            background: white;
+            padding: 20px;
+            border-radius: 6px;
+            text-align: center;
+            max-width: 85%;
+        }
+
+        #popup img{
+            max-width: 100%;
+            max-height: 420px;
+            animation: zoomIn 0.4s ease;
+            transition: transform 0.5s;
+        }
+
+        @keyframes zoomIn{
+            from{
+                transform: scale(0.7);
+                opacity: 0;
+            }
+            to{
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .btn{
+            margin: 15px 10px 0;
+            padding: 8px 16px;
+            background: #b30000;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            border-radius: 4px;
+        }
+
+        .btn:hover{
+            background: black;
+        }
+
+        /* ===== FOOTER ===== */
+        #footer{
+            background: black;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div id="header">
+    <img src="logo.png" class="logo">
+    <h1>ARUNODAY JATIYA VIDYALAYA, JAPIA<br>অৰুণোদয় জাতীয় বিদ্যালয়, জাপিয়া</h1>
+    <img src="logo.png" class="logo">
+</div>
+
+<!-- NAV -->
+<div id="nav">
+    <a href="index.html">HOME</a>
+    <a href="ajabout.html">ABOUT</a>
+    <a href="ajvph.html">GALLERY</a>
+    <a href="ajvcontact.html">CONTACT</a>
+    <a href="ajvadmission.html">ADMISSION</a>
+    <a href="ajvteachers.html">TEACHERS</a>
+</div>
+
+<!-- GALLERY -->
+<div id="gallery">
+    <h2>School Gallery</h2>
+
+    <div class="gallery-grid">
+        <div class="photo"><img src="g1.jpeg" alt="School Gallery Photo" onclick="openPhoto(this.src)"></div>
+        <div class="photo"><img src="g2.jpeg" alt="School Gallery Photo" onclick="openPhoto(this.src)"></div>
+        <div class="photo"><img src="g3.jpeg" alt="School Gallery Photo" onclick="openPhoto(this.src)"></div>
+        <div class="photo"><img src="g4.jpeg" alt="School Gallery Photo" onclick="openPhoto(this.src)"></div>
+        <div class="photo"><img src="g5.jpeg" alt="School Gallery Photo" onclick="openPhoto(this.src)"></div>
+
+        <div class="photo"><img src="g6.jpeg" alt="School Gallery Photo" onclick="openPhoto(this.src)"></div>
+        <div class="photo"><img src="g7.jpeg" alt="School Gallery Photo" onclick="openPhoto(this.src)"></div>
+        <div class="photo"><img src="g8.jpeg" alt="School Gallery Photo" onclick="openPhoto(this.src)"></div>
+        <div class="photo"><img src="g9.jpeg" alt="School Gallery Photo" onclick="openPhoto(this.src)"></div>
+        <div class="photo"><img src="g10.jpeg" alt="School Gallery Photo" onclick="openPhoto(this.src)"></div>
+    </div>
+</div>
+
+<!-- POPUP -->
+<div id="popup">
+    <div id="popup-content">
+        <img id="popup-img">
+        <br>
+        <button class="btn" onclick="rotatePhoto()">Rotate 360°</button>
+        <button class="btn" onclick="closePhoto()">Close</button>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<div id="footer">
+    © 2026 Arunoday Jatiya Vidyalaya, Japia. Designed & Developed by Ashik Ikbal
+</div>
+
+<!-- SCRIPT -->
+<script>
+    let angle = 0;
+
+    function openPhoto(src){
+        document.getElementById("popup").style.display = "flex";
+        document.getElementById("popup-img").src = src;
+        angle = 0;
+        document.getElementById("popup-img").style.transform = "rotate(0deg)";
+    }
+
+    function closePhoto(){
+        document.getElementById("popup").style.display = "none";
+    }
+
+    function rotatePhoto(){
+        angle += 360;
+        document.getElementById("popup-img").style.transform = "rotate(" + angle + "deg)";
+    }
+
+    // Click outside image to close
+    document.getElementById("popup").addEventListener("click", function(e){
+        if(e.target.id === "popup"){
+            closePhoto();
+        }
+    });
+
+    // ESC key to close
+    document.addEventListener("keydown", function(e){
+        if(e.key === "Escape"){
+            closePhoto();
+        }
+    });
+</script>
+
+</body>
+</html>
